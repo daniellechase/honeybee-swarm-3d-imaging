@@ -2,7 +2,7 @@
 
 Analysis and figure generation pipelines for honeybee swarm assembly experiments.
 
-> **Data availability:** The `data/` directory in this repository contains pre-computed outputs (calibration parameters, tracks, morphology metrics) for session S02/0722. Pipelines marked **runs with provided data** work out of the box. Pipelines marked **requires raw data** need access to the original video files and mask NPZ files on the lab storage drives and will not run without them.
+> **Data availability:** The `data/` directory in this repository contains pre-computed outputs (calibration parameters, tracks, morphology metrics) for session S02/0722. Pipelines marked runs with provided data work out of the box. Pipelines marked requires raw data need access to the original raw video files to run. The code used to produce the provided data is included.
 
 ---
 
