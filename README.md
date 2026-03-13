@@ -66,9 +66,8 @@ run-morphology-figures --config configs/figures/figmorph/S02_0722_gate.yaml
 
 Key config sections:
 - `input.metrics_cache` — path to parquet produced by `run-morphology`
-- `input.weight_csv` — optional scale data
-- `session` — phase boundary timestamps
-- `plots` — output format, smoothing windows, normalization mode
+- `input.weight_csv` 
+- `plots` 
 
 ---
 
