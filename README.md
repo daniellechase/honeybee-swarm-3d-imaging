@@ -56,18 +56,18 @@ Each pipeline require a single YAML config.
 
 ---
 
-### Morphology figures — *runs with provided data*
+### Morphology figures
 
-Generate time-series figures (normalized volume/mass, diameter/length, scatter plots, flying bee count) from a pre-computed metrics parquet.
+Generate time-series figures (normalized volume/mass, diameter/length, scatter plots, flying bee count) from cached data
 
 ```bash
 run-morphology-figures --config configs/figures/figmorph/S02_0722_gate.yaml
 ```
 ---
 
-### Trajectory figures — *runs with provided data*
+### Trajectory figures
 
-Trajectory overlay figures from 3D tracks. 
+Trajectory overlay figures from cached trajectories
 
 ```bash
 run-trajectory --config configs/figures/figtraj/S02_0722.yaml
@@ -75,7 +75,7 @@ run-trajectory --config configs/figures/figtraj/S02_0722.yaml
 
 ---
 
-### Quiver figures — *runs with provided data*
+### Quiver figures
 
 Quiver / velocity-field plots from 3D tracks.
 
@@ -85,9 +85,9 @@ run-quiver --config configs/figures/quiver/S02_0722_gate.yaml
 
 ---
 
-### Morphology — *requires raw data*
+### Morphology
 
-Compute morphology metrics (volume, diameter, length) from swarm mask NPZ files on the lab storage drives.
+Compute morphology metrics (volume, diameter, height) from swarm masks
 
 ```bash
 run-morphology --config configs/morphology/S02_0722.yaml
@@ -95,9 +95,9 @@ run-morphology --config configs/morphology/S02_0722.yaml
 
 ---
 
-### Trajectories — *requires raw data*
+### Trajectories
 
-Run 2D tracking and stereo triangulation from GoPro video pairs on the lab storage drives.
+Run 2D tracking and stereo triangulation from GoPro video pairs
 
 ```bash
 run-trajectories --config configs/trajectories/S02_0722.yaml
@@ -105,9 +105,7 @@ run-trajectories --config configs/trajectories/S02_0722.yaml
 
 ---
 
-### Calibration — *requires raw data*
-
-Stereo camera calibration pipeline (AprilTag-based), steps 1–6. Requires the raw calibration videos on the lab storage drives.
+### Calibration
 
 Run all steps:
 ```bash
@@ -132,16 +130,14 @@ run-calibration --config configs/calibration/S02/0722/S02_0722_gate.yaml --only 
 
 ---
 
-### Frame sequence strips — *requires raw data*
-
-Extract frames from a video at specified timestamps and assemble them into a horizontal strip figure (PDF + PNG). Requires the raw video on the lab storage drives.
+### Frame sequence strips
 
 ```bash
 run-frame-sequences --config configs/figures/frame_sequences/S202_0725.yaml
 ```
 ---
 
-### ML identification figures — *requires raw data*
+### ML identification figures
 
 ```bash
 run-ml-identification --config configs/figures/ml_identification/S02_0722.yaml
