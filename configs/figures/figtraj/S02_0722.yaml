@@ -7,8 +7,8 @@ output:
   figures_dir: "figures/trajectories"
 
 trajectory:
-  video_left:  null #"/mnt/peleg1/Swarm Assembly 2025/S02/0722/gopro_pair_gate/left_camera/GH440142.MP4"
-  video_right: null #"/mnt/peleg1/Swarm Assembly 2025/S02/0722/gopro_pair_gate/right_camera/GH440269.MP4"
+  video_left:  null #raw data dir
+  video_right: null #raw data dir
   intrinsics_left:  "data/calibration/S02/0722/calibration_data/large_calibration_board/intrinsics/large_board_gate_left_intrinsics.json"
   intrinsics_right: "data/calibration/S02/0722/calibration_data/large_calibration_board/intrinsics/large_board_gate_right_intrinsics.json"
   extrinsics:       "data/calibration/S02/0722/calibration_data/large_calibration_board/extrinsics/large_board_gate_left_to_gate_right_stereo_extrinsics.json"

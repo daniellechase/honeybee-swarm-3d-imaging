@@ -20,21 +20,6 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-
-# ---------------------------------------------------------------------------
-# Wong (2011) colorblind-safe palette
-# ---------------------------------------------------------------------------
-WONG = dict(
-    black     = "#000000",
-    orange    = "#E69F00",
-    sky       = "#56B4E9",
-    green     = "#009E73",
-    yellow    = "#F0E442",
-    blue      = "#0072B2",
-    vermilion = "#D55E00",
-    pink      = "#CC79A7",
-)
-
 # Line colors per physical quantity
 COL_VOL    = "#1f77b4"
 COL_DIAM   = "#2CA9B9"

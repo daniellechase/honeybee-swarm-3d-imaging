@@ -1,6 +1,6 @@
 #requires raw data directiories
 
-raw_root: "/mnt/peleg1/Swarm Assembly 2025"
+raw_root: null #raw data dir
 processed_root: "data"
 figures_root: "figures"
 

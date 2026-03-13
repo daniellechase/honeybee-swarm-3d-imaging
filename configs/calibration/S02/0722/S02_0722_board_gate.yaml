@@ -1,5 +1,3 @@
-#requires raw data directories
-
 # Board boundary localization config
 # Run with: run-board-localize --config configs/calibration/S02/0722/S02_0722_board_gate.yaml
 #
@@ -18,8 +16,8 @@ output: "data/calibration/S02/0722/gate/board_extents.json"
 
 pairs:
   - key: gate
-    left_video:   "/mnt/peleg1/Swarm Assembly 2025/S02/0722/gopro_pair_gate/left_camera/GH430142.MP4"
-    right_video:  "/mnt/peleg1/Swarm Assembly 2025/S02/0722/gopro_pair_gate/right_camera/GH430269.MP4"
+    left_video:   null #raw data dir
+    right_video:  null #raw data dir
     left_frame:   21600
     right_frame:  21600   # adjust for dk
     z_offset_m:   0.035   # 3.5 cm added to triangulated z_center (accounting for queen cage)

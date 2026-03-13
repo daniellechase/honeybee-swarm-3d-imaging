@@ -5,11 +5,9 @@ format: "pdf"   # "pdf" | "png" | "svg"
 dpi: 400
 
 input:
-  video:          "/mnt/peleg1/Swarm Assembly 2025/S02/0722/gopro_pair_gate/left_camera/GH430142.MP4"
-  mask_dir:       "/mnt/peleg1/Swarm Assembly 2025/swarm_detection/S02/0722/gopro_pair_gate/left_camera/GH430142_Masks_Npz"
-  detection_path: "/mnt/peleg1/Swarm Assembly 2025/bee_detection/S02/0722/gopro_pair_gate/left_camera/S02_0722_gopro_pair_gate_left_camera_GH430142.npy"
-  frame_idx: 10800   # local frame number within the video
-
+  video: null #raw data dir
+  mask_dir: null #raw data dir
+  detection_path: null #raw data dir
 style:
   # Full-frame figure
   main_contour_color: [1.0, 0.0, 0.0]   # red swarm outline

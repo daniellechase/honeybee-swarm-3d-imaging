@@ -1,0 +1,67 @@
+run_id:   
+no overwrite: false
+session:
+  data_root: null #raw data dir
+  stereo_side: "gate"
+  fps: 60               # camera frame rate — used to convert time-based params to frames
+
+calibration:
+  calibration_yaml: "data/configs/calibration/S02/0722/S02_0722_gate.yaml"  # source of per-video dk values from sweep_dk.results
+  intrinsics_left:  "data/calibration/S02/0722/calibration_data/large_calibration_board/intrinsics/large_board_gate_left_intrinsics.json"
+  intrinsics_right: "data/calibration/S02/0722/calibration_data/large_calibration_board/intrinsics/large_board_gate_right_intrinsics.json"
+  extrinsics:       "data/calibration/S02/0722/calibration_data/large_calibration_board/extrinsics/large_board_gate_left_to_gate_right_stereo_extrinsics.json"
+
+detections:
+  left_npy_dir:  null #raw data dir
+  right_npy_dir: null #raw data dir
+  gh_files:        # GH stems to process — left and right matched by list order (left[0] pairs with right[0])
+    - GH440142     # left camera
+    - GH440269     # right camera
+    - GH430142     # left camera
+    - GH430269     # right camera
+    - GH450142     # left camera
+    - GH450269     # right camera    
+
+tracking_2d:
+  max_dist: 60              # max pixel distance from predicted position to accept a match (this means a maximum error bound not a hard distance cutoff)
+  max_frame_skip: 1         # frames a track can survive without detection, 1 means no skip
+  min_track_len: 5          # discard tracks shorter than this
+  use_velocity: true
+  angle_penalty_weight: 0.0
+  min_speed_for_angle: 5.0
+  vel_ema_alpha: 0.1
+  interpolate_gaps: true    # fill gaps with linear interpolation
+
+tracking_3d:
+  zmin_m: 0.4               # minimum accepted depth (metres)
+  zmax_m: 1.8               # maximum accepted depth (metres)
+  y_thresh_px: 6.0          # max epipolar error (pixels) for a valid stereo match
+  rectification_alpha: 0.0  # stereoRectify alpha (0 = crop to valid pixels)
+  use_velocity_prior: true
+  max_3d_dist: null          # hard gate (metres/frame): reject if ||pt3d - last_pos|| > this * dt
+  max_pred_error: 0.05    # hard gate (metres/frame): reject if ||pt3d - pred_pos|| > this * dt  (None = disabled)
+  vel_ema_alpha: 0.1        # EMA smoothing for 3D velocity 
+  smoothness_lambda: 0.0    # acceleration penalty weight added to assignment cost (0 = off)
+
+smoothing:
+  window_sec: 0.05       # Savitzky-Golay window duration in seconds (converted to frames using fps)
+  polyorder: 1           # SG polynomial order (must be < window in frames)
+
+filtering:
+  min_length: 5         # minimum matched (non-interpolated) frames to keep a track
+  max_gap: 2            # max consecutive interpolated frames allowed (0 = no gaps)
+  max_accel: null    # max ||X(t+1)-2X(t)+X(t-1)|| in metres/frame² 
+  max_speed: null     # max ||X(t)-X(t-1)|| in metres/frame 
+
+visualize_2d:
+  n_sample_tracks: 25   # number of 2D tracks to show in the grid
+  seed: 42
+
+visualize_3d:
+  n_sample_tracks: 15   # number of 3D tracks to project onto XY/XZ/YZ planes
+  seed: 42
+  plot_all_tracks: true      # if true, save a multi-page PDF of all trajectories (3D only)
+  all_tracks_per_page: 48     # tracks per PDF page
+
+output:
+  output_dir: "data/trajectories/S02/0722"

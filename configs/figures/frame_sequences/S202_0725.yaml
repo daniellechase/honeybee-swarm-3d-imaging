@@ -19,7 +19,7 @@ strip:
 sequences:
 
   assembly:
-    video: "/mnt/peleg1/Swarm Assembly 2025/S02/0722/camcorder/C0015.MP4"
+    video: null #raw data dir
     label_unit: "min"   # labels show minutes since first frame
     times:
       - "00:05:15"
@@ -32,7 +32,7 @@ sequences:
       - "assembly_strip.png"
 
   disassembly:
-    video: "/mnt/peleg1/Swarm Assembly 2025/S02/0725/camcorder/C0024.MP4"
+    video: null #raw data dir
     label_unit: "sec"   # labels show seconds since first frame
     times:
       - "02:28:59"

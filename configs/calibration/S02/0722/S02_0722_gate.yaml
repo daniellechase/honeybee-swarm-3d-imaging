@@ -1,6 +1,4 @@
-#requires raw data directories
-
-raw_root: "/mnt/peleg1/Swarm Assembly 2025"
+raw_root: null #raw data dir
 processed_root: "data" #folder for outputs, subfolder is calibration
 
 session:

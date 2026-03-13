@@ -1,13 +1,10 @@
-#requires raw data directories
-
 session:
   fps: 60
 
 data:
   # Mask directories (left camera is primary; right is optional for metric volume)
-  mask_base_left:  "/mnt/peleg1/Swarm Assembly 2025/swarm_detection/S02/0722/gopro_pair_gate/left_camera"
-  mask_base_right: "/mnt/peleg1/Swarm Assembly 2025/swarm_detection/S02/0722/gopro_pair_gate/right_camera"
-
+  mask_base_left:  null #raw data dir
+  mask_base_right: null #raw data dir
   # Folders in chronological order
   folders_left:
     - "GH420142_Masks_Npz"
@@ -34,15 +31,15 @@ data:
   frames_per_video: null
 
   # Video directory for accurate frame-count detection (optional)
-  video_base_left: "/mnt/peleg1/Swarm Assembly 2025/S02/0722/gopro_pair_gate/left_camera/"
+  video_base_left: null #raw data dir
   video_ext: ".MP4"
 
   # Weight CSV (columns: frame_num, weight)
-  weight_csv: "/mnt/peleg1/Swarm Assembly 2025/S02/0722/scale/GH010174_weights.csv"
+  weight_csv: null #raw data dir
 
   # Flying bee detection npy directories (optional)
-  bee_detect_base_left:  "/mnt/peleg1/Swarm Assembly 2025/bee_detection/S02/0722/gopro_pair_gate/left_camera"
-  bee_detect_base_right: "/mnt/peleg1/Swarm Assembly 2025/bee_detection/S02/0722/gopro_pair_gate/right_camera"
+  bee_detect_base_left:  null #raw data dir
+  bee_detect_base_right: null #raw data dir
 
   # Tolerance (frames) for matching right masks to left + dk
   right_mask_tolerance: 60
@@ -52,9 +49,9 @@ data:
 
 
 calibration:
-  intrinsics_left:  "/mnt/peleg1/Swarm Assembly 2025/S02/0722/calibration_data/large_calibration_board/intrinsics/large_board_gate_left_intrinsics.json"
-  intrinsics_right: "/mnt/peleg1/Swarm Assembly 2025/S02/0722/calibration_data/large_calibration_board/intrinsics/large_board_gate_right_intrinsics.json"
-  extrinsics:       "/mnt/peleg1/Swarm Assembly 2025/S02/0722/calibration_data/large_calibration_board/extrinsics/large_board_gate_left_to_gate_right_stereo_extrinsics.json"
+  intrinsics_left:  "data/calibration/S02/0722/calibration_data/large_calibration_board/intrinsics/large_board_gate_left_intrinsics.json"
+  intrinsics_right: "data/calibration/S02/0722/calibration_data/large_calibration_board/intrinsics/large_board_gate_right_intrinsics.json"
+  extrinsics:       "data/calibration/S02/0722/calibration_data/large_calibration_board/extrinsics/large_board_gate_left_to_gate_right_stereo_extrinsics.json"
 
   # Per-video frame offset (right_frame + dk = left_frame).
   # Read these from sweep_dk results in the calibration pipeline output.
@@ -70,5 +67,5 @@ calibration:
 
 
 metrics_cache:
-  path: "data/morphology/S02_0722_metrics.parquet"
+  path: "data/morphology/S02/0722/S02_0722_metrics.parquet"
   use_cache: false    # set false to recompute
