@@ -1,8 +1,8 @@
 # honeybee-swarm-3d-imaging
 
-Analysis and figure generation pipelines for honeybee swarm assembly experiments.
+Analysis and figure generation pipelines for the paper: 3D Imaging of Honeybee Swarm Assembly and Disassembly
 
-> **Data availability:** The `data/` directory in this repository contains pre-computed outputs (calibration parameters, tracks, morphology metrics) for session S02/0722. Pipelines marked runs with provided data work out of the box. Pipelines marked requires raw data need access to the original raw video files to run. The code used to produce the provided data is included. Data is available using LFS or directly on Zenodo: [10.5281/zenodo.18992443](https://doi.org/10.5281/zenodo.18992443.)
+> **Data availability:** The `data/` directory in this repository contains pre-computed outputs (calibration parameters, trajectories, morphology metrics) for session S02/0722. Pipelines marked runs with provided data work out of the box. Pipelines marked requires raw data need access to the original raw video files to run. The code used to produce the provided data is included. Data is available using LFS or directly on Zenodo: [10.5281/zenodo.18992443](https://doi.org/10.5281/zenodo.18992443.)
 
 ---
 
