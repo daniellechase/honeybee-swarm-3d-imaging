@@ -2,7 +2,7 @@
 
 Analysis and figure generation pipelines for the paper: 3D Imaging of Honeybee Swarm Assembly and Disassembly
 
-> **Data availability:** Data is available at Zenodo: [10.5281/zenodo.18992443](https://doi.org/10.5281/zenodo.18992443.) and should be extracted to the `data/` folder.
+> **Data availability:** Data is available at Zenodo: [https://doi.org/10.5281/zenodo.18992442](https://doi.org/10.5281/zenodo.18992442.) and should be extracted to the `data/` folder.
 
 ---
 
