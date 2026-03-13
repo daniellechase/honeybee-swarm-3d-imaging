@@ -1,7 +1,0 @@
-stage,count,notes
-Raw detections (left),2223549,left camera
-Raw detections (right),1594757,right camera
-"In 2D tracks, matched (left)",1957119,left camera
-"In 2D tracks, matched (right)",1419258,right camera
-In 3D trajectories,799381,91513 trajs
-After length/gap filter,714387,53938 trajs
