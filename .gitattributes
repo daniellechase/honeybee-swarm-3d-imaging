@@ -1,1 +1,2 @@
 *.parquet filter=lfs diff=lfs merge=lfs -text
+data/trajectories/S02/0722/GH440142_3d.parquet filter=lfs diff=lfs merge=lfs -text
