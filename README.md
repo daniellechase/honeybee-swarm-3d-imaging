@@ -2,7 +2,7 @@
 
 Analysis and figure generation pipelines for the paper: 3D Imaging of Honeybee Swarm Assembly and Disassembly
 
-> **Data availability:** The `data/` directory in this repository contains pre-computed outputs (calibration parameters, trajectories, morphology metrics) for session S02/0722. Pipelines marked runs with provided data work out of the box. Pipelines marked requires raw data need access to the original raw video files to run. The code used to produce the provided data is included. Data is available using LFS or directly on Zenodo: [10.5281/zenodo.18992443](https://doi.org/10.5281/zenodo.18992443.)
+> **Data availability:** Data is available at Zenodo: [10.5281/zenodo.18992443](https://doi.org/10.5281/zenodo.18992443.) and should be extracted to the `data/` folder.
 
 ---
 
@@ -32,10 +32,7 @@ configs/                          YAML configs — one per session / pipeline ru
     ml_identification/
     quiver/
 
-data/                             Pre-computed outputs included in this repo
-  calibration/S02/0722/           Stereo calibration parameters (JSON)
-  morphology/S02/0722/            Morphology metrics (parquet)
-  trajectories/S02/0722/          3D tracks and 2D tracks (parquet)
+data/                             access data at zenodo and upload all folders to this directory
 
 src/swarm_assembly_methods/       Package source code
   calibration/                    Stereo camera calibration (AprilTag-based)
