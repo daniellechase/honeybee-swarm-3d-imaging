@@ -18,5 +18,6 @@ build/
 **/.smbdelete*
 
 
-#Data
+# Data
 data/**
+!data/.gitkeep
