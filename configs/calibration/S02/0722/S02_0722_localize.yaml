@@ -1,0 +1,21 @@
+#requires raw data directories
+
+fps: 60.0
+
+gate:
+  left_video:  /mnt/peleg1/Swarm Assembly 2025/S02/0722/gopro_pair_gate/left_camera/GH430142.MP4
+  right_video: /mnt/peleg1/Swarm Assembly 2025/S02/0722/gopro_pair_gate/right_camera/GH430269.MP4
+  intrinsics_left:  /mnt/peleg1/Swarm Assembly 2025/S02/0722/calibration_data/large_calibration_board/intrinsics/large_board_gate_left_intrinsics.json
+  intrinsics_right: /mnt/peleg1/Swarm Assembly 2025/S02/0722/calibration_data/large_calibration_board/intrinsics/large_board_gate_right_intrinsics.json
+  extrinsics:       /mnt/peleg1/Swarm Assembly 2025/S02/0722/calibration_data/large_calibration_board/extrinsics/large_board_gate_left_to_gate_right_stereo_extrinsics.json
+  t_sec: 360.0      # seconds into the gate left video where scene is visible from both pairs
+
+shed:
+  left_video:  /mnt/peleg1/Swarm Assembly 2025/S02/0722/gopro_pair_shed/left_camera/GH440259.MP4
+  right_video: /mnt/peleg1/Swarm Assembly 2025/S02/0722/gopro_pair_shed/right_camera/GH440195.MP4
+  intrinsics_left:  /mnt/peleg1/Swarm Assembly 2025/S02/0722/calibration_data/large_calibration_board/intrinsics/large_board_shed_left_intrinsics.json
+  intrinsics_right: /mnt/peleg1/Swarm Assembly 2025/S02/0722/calibration_data/large_calibration_board/intrinsics/large_board_shed_right_intrinsics.json
+  extrinsics:       /mnt/peleg1/Swarm Assembly 2025/S02/0722/calibration_data/large_calibration_board/extrinsics/large_board_shed_left_to_shed_right_stereo_extrinsics.json
+  t_sec: 1.0      # seconds into the shed left video where scene is visible from both pairs
+
+output: /mnt/peleg1/Swarm Assembly 2025/S02/0722/calibration_data/large_calibration_board/localization/gate_to_shed_localization.json

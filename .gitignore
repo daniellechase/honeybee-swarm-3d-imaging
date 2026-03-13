@@ -1,0 +1,20 @@
+# Python build artifacts
+*.egg-info/
+__pycache__/
+*.pyc
+*.pyo
+dist/
+build/
+
+# Virtual environment
+.venv/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+**/.smbdelete*
+data/trajectories/S02/0722/GH440142_3d.parquet
+data/trajectories/S02/0722/.smbdelete*

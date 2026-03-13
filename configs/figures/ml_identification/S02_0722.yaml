@@ -1,0 +1,36 @@
+#requires raw data directories
+
+save_dir: "figures/ml_identification/S02_0722"
+format: "pdf"   # "pdf" | "png" | "svg"
+dpi: 400
+
+input:
+  video:          "/mnt/peleg1/Swarm Assembly 2025/S02/0722/gopro_pair_gate/left_camera/GH430142.MP4"
+  mask_dir:       "/mnt/peleg1/Swarm Assembly 2025/swarm_detection/S02/0722/gopro_pair_gate/left_camera/GH430142_Masks_Npz"
+  detection_path: "/mnt/peleg1/Swarm Assembly 2025/bee_detection/S02/0722/gopro_pair_gate/left_camera/S02_0722_gopro_pair_gate_left_camera_GH430142.npy"
+  frame_idx: 10800   # local frame number within the video
+
+style:
+  # Full-frame figure
+  main_contour_color: [1.0, 0.0, 0.0]   # red swarm outline
+  main_contour_lw: 1.0
+  bbox_color: [0.0, 0.0, 1.0]           # blue bounding boxes
+  bbox_lw: 0.5
+  point_color: [1.0, 0.0, 0.0]          # red center dots
+  point_size: 2
+
+  # Crop figures
+  crop_pad: 10                           # pixels of padding around swarm bbox
+  crop_fill_color: [1.0, 0.0, 0.0]      # fill color for white-bg crop
+  crop_fill_alpha: 0.3
+  crop_contour_color: [1.0, 0.0, 0.0]
+  crop_contour_lw: 0.8
+
+  # Detection crops
+  n_crops: 10           # number of example crops to save
+  crop_w: 40            # fixed crop width in pixels
+  crop_h: 40            # fixed crop height in pixels
+  crop_padding: 2       # extra padding around bbox when auto_crop=true
+  auto_crop: false      # if true, derive crop_w/h from bbox size distribution
+  auto_crop_quantile: 0.95
+  crop_bbox_lw: 2.0

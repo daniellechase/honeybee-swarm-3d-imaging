@@ -1,0 +1,74 @@
+#requires raw data directiories
+
+raw_root: "/mnt/peleg1/Swarm Assembly 2025"
+processed_root: "data"
+figures_root: "figures"
+
+session:
+  subject: S02
+  date: "0722"
+  stereo_side: gate
+  fps: 60
+  run_id:  
+
+
+input:
+  folders_left:
+    - "GH420142_Masks_Npz"
+    - "GH430142_Masks_Npz"
+    - "GH440142_Masks_Npz"
+    - "GH450142_Masks_Npz"
+    - "GH460142_Masks_Npz"
+    - "GH470142_Masks_Npz"
+    - "GH480142_Masks_Npz"
+  frames_per_video: null   # auto-filled on first run
+
+phases:
+  disassembly_start_local: null 
+  disassembly_end_local:   null 
+  assembly_start_local:    null 
+
+  weight_t0: "auto"
+
+  # Mass signal detection tuning (always used for time axis alignment).
+  smooth_s: 3.0            # smoothing window (seconds)
+
+  # Mass-based absolute thresholds (in the same units as the weight CSV, typically kg).
+  # These take priority over the *_frac fallbacks below.
+  baseline_window_s: 30.0 
+  onset_drop_mass: 0.003   # t0: mass must drop this much below baseline (e.g. 0.001 = 1 g)
+  recovery_mass: 0.003    # disassembly end: mass within this much above minimum
+  assembly_mass: 0.003     # assembly start: mass must rise this much above minimum
+  assembly_end_mass: 0.003  # assembly end: mass within this much of final value
+
+# Mask overlay times — [folder_name, seconds_within_video]
+overlay_times_local:
+  - ["GH430142_Masks_Npz",  180]
+  - ["GH430142_Masks_Npz",  190]
+  - ["GH430142_Masks_Npz",  195]
+  - ["GH440142_Masks_Npz",  60]   # 1:00 into GH44 (assembly)
+  - ["GH440142_Masks_Npz", 120]   # 2:00
+  - ["GH440142_Masks_Npz", 310]   # 5:10
+  - ["GH470142_Masks_Npz", 409]   # 3:00 into GH47
+
+
+plots:
+  format: "pdf"             # "pdf" | "png" | "svg"
+  paper_style: true
+
+  # Per-phase smoothing (seconds)
+  rolling_window_s_disassembly: 2
+  rolling_window_s_assembly: 10
+
+  # Per-phase plot decimation (seconds between plotted points)
+  plot_interval_s_disassembly: 0.1
+  plot_interval_s_assembly: 1
+
+  # Normalization: "t0", "max", "mean", or "none"
+  norm_mode: "t0"
+
+  # How many minutes before t=0 to show in full-range plots (0 = start at t=0)
+  t_pre_min: 0
+
+  # Cap the time axis at this many minutes
+  t_plot_end: 30

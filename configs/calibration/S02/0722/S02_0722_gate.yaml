@@ -1,0 +1,58 @@
+#requires raw data directories
+
+raw_root: "/mnt/peleg1/Swarm Assembly 2025"
+processed_root: "data" #folder for outputs, subfolder is calibration
+
+session:
+  subject: S02
+  date: "0722"
+  stereo_side: gate
+  board_type: large           # large or small (determines AprilTag grid geometry)
+  run_id:                     # optional — appended as extra subdir under processed_root/calibration/S02/0722/
+
+cameras:
+  left_video: GH010142.MP4   # filename only — full path derived from raw_root/subject/date/gopro_pair_gate/left_camera/
+  right_video: GH010269.MP4
+
+frame_export:
+  start_time_sec: 360        # start of calibration board footage
+  end_time_sec: 397
+  fps: 60
+
+detection:
+  n_threads: 20
+  max_processing_width: 1920
+  show_detections: false
+  every_nth_frame: 10        # subsample frames for intrinsics (1 = use all)
+
+sweep_dk:
+  # dk convention: right_frame + dk = left_frame
+  # i.e. positive dk means right camera is dk frames AHEAD of left
+  # cam1_npy and cam2_npy derived automatically from raw_root/bee_detection/subject/date/gopro_pair_gate/
+  # results are written here automatically by s3_sweep_dk.py (keyed by GH prefix e.g. GH43)
+  npy_order: fxy             # column order in .npy files: frame, x, y
+  dk0: -5                     # centre of dk sweep range
+  dk_radius: 0              # sweep dk in [dk0-radius, dk0+radius]
+  thresh_pixels: 3.0         # epipolar match threshold (pixels)
+  baseline: 0.5              # approximate baseline (m) for synthetic E when no extrinsics yet
+  t_start: 0                 # first frame to consider from left camera
+  t_end: 20000               # last frame to consider from left camera
+  max_frames: 800            # max frames sampled per dk value
+  seed: 42
+  results:                   # auto-populated by s3_sweep_dk.py — do not edit manually
+    GH43: -5
+    GH44: -5
+    GH45: -5
+extrinsics:
+  # NOTE: dk here uses OPPOSITE sign convention to sweep_dk.results
+  # pair_by_offset: right_frame = left_frame + dk (so dk=-1 means right is 1 frame behind left)
+  dk: -1               # frame offset for stereo calibration frame pairing
+  dk_sweep: 0           # list of dk values to try, keep lowest RMS (null = use dk only)
+  min_common_tags: 2   # minimum AprilTags visible in both cameras to use a frame pair
+  max_pairs: 300       # max frame pairs to use per dk value
+
+rectification:
+  alpha: 0.0           # 0 = crop to valid pixels only, 1 = keep all pixels (black borders)
+
+view_rectified:
+  sync_frame: 20000    # frame number to display in rectification viewer

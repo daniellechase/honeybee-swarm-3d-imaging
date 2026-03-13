@@ -1,0 +1,74 @@
+#requires raw data directories
+
+session:
+  fps: 60
+
+data:
+  # Mask directories (left camera is primary; right is optional for metric volume)
+  mask_base_left:  "/mnt/peleg1/Swarm Assembly 2025/swarm_detection/S02/0722/gopro_pair_gate/left_camera"
+  mask_base_right: "/mnt/peleg1/Swarm Assembly 2025/swarm_detection/S02/0722/gopro_pair_gate/right_camera"
+
+  # Folders in chronological order
+  folders_left:
+    - "GH420142_Masks_Npz"
+    - "GH430142_Masks_Npz"
+    - "GH440142_Masks_Npz"
+    - "GH450142_Masks_Npz"
+    - "GH460142_Masks_Npz"
+    - "GH470142_Masks_Npz"
+    - "GH480142_Masks_Npz"
+
+  folders_right:
+    - "GH420269_Masks_Npz"
+    - "GH430269_Masks_Npz"
+    - "GH440269_Masks_Npz"
+    - "GH450269_Masks_Npz"
+    - "GH460269_Masks_Npz"
+    - "GH470269_Masks_Npz"
+    - "GH480269_Masks_Npz"
+
+  # Subsampling per folder (load every Nth file)
+  load_intervals: [2, 2, 2, 5, 5, 5, 5]
+
+  # frames_per_video: null means auto-detect from video files (preferred)
+  frames_per_video: null
+
+  # Video directory for accurate frame-count detection (optional)
+  video_base_left: "/mnt/peleg1/Swarm Assembly 2025/S02/0722/gopro_pair_gate/left_camera/"
+  video_ext: ".MP4"
+
+  # Weight CSV (columns: frame_num, weight)
+  weight_csv: "/mnt/peleg1/Swarm Assembly 2025/S02/0722/scale/GH010174_weights.csv"
+
+  # Flying bee detection npy directories (optional)
+  bee_detect_base_left:  "/mnt/peleg1/Swarm Assembly 2025/bee_detection/S02/0722/gopro_pair_gate/left_camera"
+  bee_detect_base_right: "/mnt/peleg1/Swarm Assembly 2025/bee_detection/S02/0722/gopro_pair_gate/right_camera"
+
+  # Tolerance (frames) for matching right masks to left + dk
+  right_mask_tolerance: 60
+
+  # Parallel I/O workers
+  n_workers: 8
+
+
+calibration:
+  intrinsics_left:  "/mnt/peleg1/Swarm Assembly 2025/S02/0722/calibration_data/large_calibration_board/intrinsics/large_board_gate_left_intrinsics.json"
+  intrinsics_right: "/mnt/peleg1/Swarm Assembly 2025/S02/0722/calibration_data/large_calibration_board/intrinsics/large_board_gate_right_intrinsics.json"
+  extrinsics:       "/mnt/peleg1/Swarm Assembly 2025/S02/0722/calibration_data/large_calibration_board/extrinsics/large_board_gate_left_to_gate_right_stereo_extrinsics.json"
+
+  # Per-video frame offset (right_frame + dk = left_frame).
+  # Read these from sweep_dk results in the calibration pipeline output.
+  # Key is the GH prefix of the left-camera folder (e.g. "GH42" for GH420142_Masks_Npz).
+  dk_by_video:
+    GH42: -5
+    GH43: -5
+    GH44: -5
+    GH45: -5
+    GH46: -5
+    GH47: -5
+    GH48: -5
+
+
+metrics_cache:
+  path: "data/morphology/S02_0722_metrics.parquet"
+  use_cache: false    # set false to recompute

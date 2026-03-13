@@ -1,0 +1,69 @@
+session:
+  subject: S02
+  date: "0722"
+  stereo_side: gate
+
+run_id: null
+no_overwrite: false
+
+input:
+  tracks_dir: "data/trajectories/S02/0722"
+
+boundary:
+  mask_pairs:
+    - key: GH430142
+      left:  "data/swarm_detection/S02/0722/gopro_pair_gate/left_camera/GH430142_Masks_Npz/S02_0722_gopro_pair_gate_left_camera_GH430142_010200.npz"
+      right: "data/swarm_detection/S02/0722/gopro_pair_gate/right_camera/GH430269_Masks_Npz/S02_0722_gopro_pair_gate_right_camera_GH430269_010200.npz"
+    - key: GH440142
+      left:  "data/swarm_detection/S02/0722/gopro_pair_gate/left_camera/GH440142_Masks_Npz/S02_0722_gopro_pair_gate_left_camera_GH440142_024534.npz"
+      right: "data/swarm_detection/S02/0722/gopro_pair_gate/right_camera/GH440269_Masks_Npz/S02_0722_gopro_pair_gate_right_camera_GH440269_024534.npz"
+  intrinsics_left:  "data/calibration/S02/0722/calibration_data/large_calibration_board/intrinsics/large_board_gate_left_intrinsics.json"
+  intrinsics_right: "data/calibration/S02/0722/calibration_data/large_calibration_board/intrinsics/large_board_gate_right_intrinsics.json"
+  extrinsics:       "data/calibration/S02/0722/calibration_data/large_calibration_board/extrinsics/large_board_gate_left_to_gate_right_stereo_extrinsics.json"
+  flat_z: true
+  flat_top: true   # clip outline top to widest row (max x extent); set false to show full mask
+  min_width_px: 0
+  color: "black"
+  linewidth: 3
+
+
+board:
+  extents_json: "data/calibration/S02/0722/gate/board_extents.json"
+  key: "gate"
+  y_from_boundary: true  # auto-set y_center_m from boundary flat_top (widest row)
+  # y_center_m: 0.0      # used only if y_from_boundary is false
+  rect_height_m: 0.02   # total height of rectangle in metres
+  fill_alpha: 1      # rectangle fill opacity (0=transparent, 1=opaque)
+  color: "gray"
+  linewidth: 2
+  linestyle: "-"
+
+
+visualization:
+  origin_m: [0.2897, 0, 1.0697]   # y is auto-set per video from boundary flat_top (y_from_boundary: true)
+  x_range: [-0.39, 0.31]
+  y_range: [-0.1, 0.3]
+  z_range: [-0.37, 0.33]
+  t_range: null
+  speed_min: null
+  speed_max: null
+  bin_size_m: 0.1
+  bin_size_m_3d: 0.1
+  min_count: 10
+  quiver_stride: 1
+  arrow_scale: 1
+  arrow_width: 0.008
+  arrow_color_2d: "black"
+  coherence_arrow_scale: 0.5   # arrow length = |P| * this value (in metres); ~bin_size_m for one-bin-width at full coherence
+  arrow_length: 0.05
+  arrow_color_3d: "black"
+  vmin: null
+  vmax: null
+  colormap: "plasma"
+  count_colormap: "YlGnBu"
+  normalize_arrows: "flux"    # "flux", "coherence", true (equal-length), false (raw)
+  equal_arrow_scale: 0.1     # arrow_scale used only for the equal-length variant (defaults to arrow_scale)
+  elev: 10
+  azim: -65
+  figsize: [26, 6]
+  dpi: 150

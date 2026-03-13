@@ -1,0 +1,30 @@
+#requires raw data directories to see frames
+
+input:
+  tracks_dir: "data/trajectories/S02/0722"
+
+output:
+  figures_dir: "figures/trajectories"
+
+trajectory:
+  video_left:  null #"/mnt/peleg1/Swarm Assembly 2025/S02/0722/gopro_pair_gate/left_camera/GH440142.MP4"
+  video_right: null #"/mnt/peleg1/Swarm Assembly 2025/S02/0722/gopro_pair_gate/right_camera/GH440269.MP4"
+  intrinsics_left:  "data/calibration/S02/0722/calibration_data/large_calibration_board/intrinsics/large_board_gate_left_intrinsics.json"
+  intrinsics_right: "data/calibration/S02/0722/calibration_data/large_calibration_board/intrinsics/large_board_gate_right_intrinsics.json"
+  extrinsics:       "data/calibration/S02/0722/calibration_data/large_calibration_board/extrinsics/large_board_gate_left_to_gate_right_stereo_extrinsics.json"
+  calibration_yaml: "configs/calibration/S02/0722/S02_0722_gate.yaml"
+  pick: "id"           # "longest", "random", or "id"
+  n_trajectories: null
+  traj_id: 43010
+  length_min: null
+  length_max: null
+  t_min: null
+  t_max: null
+  random_seed: 42
+  point_radius: 5
+  line_thickness: 2
+  trail_color_start: [255, 255, 0]
+  trail_color_end: [0, 0, 255]
+  figsize: [20, 7]
+  dpi: 300
+  debug_interp: true

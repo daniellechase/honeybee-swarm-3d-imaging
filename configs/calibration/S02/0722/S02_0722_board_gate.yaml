@@ -1,0 +1,26 @@
+#requires raw data directories
+
+# Board boundary localization config
+# Run with: run-board-localize --config configs/calibration/S02/0722/S02_0722_board_gate.yaml
+#
+# Workflow per pair:
+#   Step 1: rectified left frame shown — click LEFT edge points, Enter, click RIGHT edge points, Enter
+#   Step 2: rectified stereo pair shown — click N corresponding points in left then right, Enter
+#
+# Output JSON: data/calibration/S02/0722/gate/board_extents.json
+# Keys per pair: x_min_m, x_max_m, x_center_m, z_center_m
+
+intrinsics_left:  "data/calibration/S02/0722/calibration_data/large_calibration_board/intrinsics/large_board_gate_left_intrinsics.json"
+intrinsics_right: "data/calibration/S02/0722/calibration_data/large_calibration_board/intrinsics/large_board_gate_right_intrinsics.json"
+extrinsics:       "data/calibration/S02/0722/calibration_data/large_calibration_board/extrinsics/large_board_gate_left_to_gate_right_stereo_extrinsics.json"
+
+output: "data/calibration/S02/0722/gate/board_extents.json"
+
+pairs:
+  - key: gate
+    left_video:   "/mnt/peleg1/Swarm Assembly 2025/S02/0722/gopro_pair_gate/left_camera/GH430142.MP4"
+    right_video:  "/mnt/peleg1/Swarm Assembly 2025/S02/0722/gopro_pair_gate/right_camera/GH430269.MP4"
+    left_frame:   21600
+    right_frame:  21600   # adjust for dk
+    z_offset_m:   0.035   # 3.5 cm added to triangulated z_center (accounting for queen cage)
+

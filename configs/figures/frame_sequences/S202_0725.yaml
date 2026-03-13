@@ -1,0 +1,46 @@
+# Frame-sequence strip figures
+#
+# Each sequence extracts frames in memory
+# assembles a horizontal strip
+
+#requires raw data directories
+
+save_dir: "figures/frame_sequences/S02/0725"
+
+strip:
+  fig_width_in: 6.5
+  dpi: 2000            # use 2000 for print-quality (large files)
+  pad_x: 12
+  pad_top: 12
+  pad_bottom: 260
+  font_size: 182      # 26 * 7
+  seek_back: 0.5      # seconds before target for reliable keyframe decode
+
+sequences:
+
+  assembly:
+    video: "/mnt/peleg1/Swarm Assembly 2025/S02/0722/camcorder/C0015.MP4"
+    label_unit: "min"   # labels show minutes since first frame
+    times:
+      - "00:05:15"
+      - "00:07:15"
+      - "00:10:15"
+      - "00:17:15"
+      - "00:35:15"
+    outputs:
+      - "assembly_strip.pdf"
+      - "assembly_strip.png"
+
+  disassembly:
+    video: "/mnt/peleg1/Swarm Assembly 2025/S02/0725/camcorder/C0024.MP4"
+    label_unit: "sec"   # labels show seconds since first frame
+    times:
+      - "02:28:59"
+      - "02:29:17"
+      - "02:29:21"
+      - "02:29:23"
+      - "02:29:59"
+    outputs:
+      - "disassembly_strip.pdf"
+      - "disassembly_strip.png"
+

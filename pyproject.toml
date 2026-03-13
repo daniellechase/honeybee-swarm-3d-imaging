@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=70", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "honeybee-swarm-3d-imaging"
+version = "0.1.0"
+description = "Analysis and figure generation pipelines for honeybee swarm assembly experiments."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "opencv-python",
+    "numpy",
+    "tqdm",
+    "pupil-apriltags",
+    "pyyaml",
+    "scipy",
+    "pandas",
+    "matplotlib",
+    "ruamel.yaml",
+    "pyarrow",
+    "pillow",
+]
+
+[project.scripts]
+run-calibration      = "swarm_assembly_methods.calibration.cli:main"
+run-calibration-s1   = "swarm_assembly_methods.calibration.cli:main_step1"
+run-calibration-s2   = "swarm_assembly_methods.calibration.cli:main_step2"
+run-calibration-s3   = "swarm_assembly_methods.calibration.cli:main_step3"
+run-calibration-s4   = "swarm_assembly_methods.calibration.cli:main_step4"
+run-calibration-s5   = "swarm_assembly_methods.calibration.cli:main_step5"
+run-calibration-s6   = "swarm_assembly_methods.calibration.cli:main_step6"
+run-morphology         = "swarm_assembly_methods.morphology.cli:main"
+run-morphology-figures = "swarm_assembly_methods.figures.figmorph.cli:main"
+run-trajectories       = "swarm_assembly_methods.trajectories.cli:main"
+run-traj-stats         = "swarm_assembly_methods.trajectories.cli:main_stats"
+run-trajectory         = "swarm_assembly_methods.figures.figtraj.cli:main_trajectory"
+run-quiver             = "swarm_assembly_methods.figures.figtraj.cli:main_quiver"
+run-frame-sequences    = "swarm_assembly_methods.figures.frame_sequences.cli:main"
+run-ml-identification  = "swarm_assembly_methods.figures.ml_identification.cli:main"
+run-stereo-localize    = "swarm_assembly_methods.calibration.localize_cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
