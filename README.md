@@ -63,17 +63,11 @@ Generate time-series figures (normalized volume/mass, diameter/length, scatter p
 ```bash
 run-morphology-figures --config configs/figures/figmorph/S02_0722_gate.yaml
 ```
-
-Key config sections:
-- `input.metrics_cache` — path to parquet produced by `run-morphology`
-- `input.weight_csv` 
-- `plots` 
-
 ---
 
 ### Trajectory figures — *runs with provided data*
 
-Trajectory overlay figures from 3D tracks. Set `video_left`/`video_right` to `null` in the config to draw trajectories on blank frames without the raw video.
+Trajectory overlay figures from 3D tracks. 
 
 ```bash
 run-trajectory --config configs/figures/figtraj/S02_0722.yaml
@@ -140,21 +134,11 @@ run-calibration --config configs/calibration/S02/0722/S02_0722_gate.yaml --only 
 
 ### Frame sequence strips — *requires raw data*
 
-Extract frames from a camcorder video at specified timestamps and assemble them into a horizontal strip figure (PDF + PNG). Requires the raw camcorder video on the lab storage drives.
+Extract frames from a video at specified timestamps and assemble them into a horizontal strip figure (PDF + PNG). Requires the raw video on the lab storage drives.
 
 ```bash
 run-frame-sequences --config configs/figures/frame_sequences/S202_0725.yaml
 ```
-
-Key config sections:
-- `save_dir` — output directory
-- `strip` — figure width, DPI, padding, font size
-- `sequences` — one entry per strip:
-  - `video` — path to camcorder video
-  - `times` — list of timestamps `"HH:MM:SS"`
-  - `label_unit` — `"min"` or `"sec"`
-  - `outputs` — output filenames (`.pdf`, `.png`)
-
 ---
 
 ### ML identification figures — *requires raw data*
